@@ -1,0 +1,6 @@
+@WebApplication1Unclewood.Api_HostAddress = http://localhost:5043
+
+GET {{WebApplication1Unclewood.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,24 @@
+﻿services:
+  UNCLEWOOD_MODULAR_MONOLITH_API:
+    image: unclewood_modular_monolith_api
+    build:
+      context: .
+      dockerfile: src/API/Unclewood.Api/Dockerfile
+    ports:
+      - "5050:8080"  # HTTP
+      - "5051:8081" # HTTPS
+    depends_on:
+      - UNCLEWOOD_MODULAR_MONOLITH_DB
+  
+  UNCLEWOOD_MODULAR_MONOLITH_DB:
+    container_name: UNCLEWOOD_MODULAR_MONOLITH_DB
+    image: postgres:latest
+    restart: always
+    volumes:
+      - ./container/database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=UUNCLEWOOD_MODULAR_MONOLITH
+      - POSTGRES_USER=souhil
+      - POSTGRES_PASSWORD=souhil433@
+    ports:
+      - "5432:5432"
