@@ -103,7 +103,7 @@ public static class DependencyInjectionIngredientModule
 
         services.AddSingleton<ISqlConnectionFactory>(_ => new SqlConnectionFactory(connectionString));
         
-        services.AddScoped<IIngrediantsRepository, IngredientRepository>();
+        services.AddScoped<IIngredientsRepository, IngredientRepository>();
         services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<UnclewoodDbContext>());
 
     }

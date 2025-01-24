@@ -4,12 +4,12 @@ using Unclewood.Modules.Ingredients.Domain;
 
 namespace Unclewood.Modules.Ingredients.Application.Queries.GetIngredient;
 
-public class GetIngredientQueryHandler(IIngrediantsRepository ingredientsRepository)
+public class GetIngredientQueryHandler(IIngredientsRepository ingredientsRepository)
     : IQueryHandler<GetIngredientQuery, IngredientResponse>
 {
     public async Task<Result<IngredientResponse>> Handle(GetIngredientQuery request, CancellationToken cancellationToken)
     {
-        var ingredient = await ingredientsRepository.GetIngrediantByIdAsync(request.IngredientId);
+        var ingredient = await ingredientsRepository.GetIngredientByIdAsync(request.IngredientId);
         
 
         if (ingredient is not null)
@@ -20,6 +20,7 @@ public class GetIngredientQueryHandler(IIngrediantsRepository ingredientsReposit
              //   DisponibleIn: ingredient.DisponibleIn.Select(l => l.ToString()).ToList(),
                 Price: ingredient.Price.Value
             );
+            ingredient.RaiseIngredientListedEvent();
             return Result.Success(ingredientResponse!);
         }
 

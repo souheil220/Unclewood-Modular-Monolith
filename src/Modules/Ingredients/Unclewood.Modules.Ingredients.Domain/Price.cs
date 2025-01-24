@@ -103,7 +103,7 @@ public sealed class Price
         return result.Value;
     }
     
-    private void EnsureSameCurrency(BasePrice other)
+    private void EnsureSameCurrency(Price other)
     {
         if (Currency != other.Currency)
         {
@@ -112,13 +112,13 @@ public sealed class Price
         
     }
 
-    public bool IsGreaterThan(BasePrice other)
+    public bool IsGreaterThan(Price other)
     {
         EnsureSameCurrency(other);
         return Value > other.Value;
     }
 
-    public bool IsLessThan(BasePrice other)
+    public bool IsLessThan(Price other)
     {
         EnsureSameCurrency(other);
         return Value < other.Value;

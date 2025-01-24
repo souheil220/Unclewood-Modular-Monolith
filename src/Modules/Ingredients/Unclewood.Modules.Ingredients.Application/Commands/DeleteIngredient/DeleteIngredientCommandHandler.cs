@@ -6,20 +6,26 @@ namespace Unclewood.Modules.Ingredients.Application.Commands.DeleteIngredient;
 
 public class DeleteIngredientCommandHandler:ICommandHandler<DeleteIngredientCommand>
 {
-    private readonly IIngrediantsRepository _ingrediantsRepository;
+    private readonly IIngredientsRepository _ingredientsRepository;
     private readonly IUnitOfWork _unitOfWork;
 
-    public DeleteIngredientCommandHandler(IIngrediantsRepository ingrediants, IUnitOfWork unitOfWork)
+    public DeleteIngredientCommandHandler(IIngredientsRepository ingredients, IUnitOfWork unitOfWork)
     {
-        _ingrediantsRepository = ingrediants;
+        _ingredientsRepository = ingredients;
         _unitOfWork = unitOfWork;
     }
     public async Task<Result> Handle(DeleteIngredientCommand request, CancellationToken cancellationToken)
     {
         try
         {
-            await _ingrediantsRepository.DeleteIngrediantAsync(request.IngredientId);
+            var ingredient = await _ingredientsRepository.GetIngredientByIdAsync(request.IngredientId);
+            if (ingredient == null)
+            {
+                return Result.Failure<Ingredient>(IngredientErrors.IngredientNotFound);
+            }
+            _ingredientsRepository.DeleteIngredient(ingredient);
             await _unitOfWork.CommitChangesAsync();
+            ingredient.RaiseIngredientDeletedEvent();
             return Result.Success();
         }
         catch (Exception e)

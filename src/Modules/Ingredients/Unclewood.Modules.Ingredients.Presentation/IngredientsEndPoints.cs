@@ -7,8 +7,12 @@ public static class IngredientsEndPoints
 {
     public static void MapEndPoints(IEndpointRouteBuilder app)
     {
+        UpdateIngredient.MapEndpoint(app);
+        DeleteIngredient.MapEndpoint(app);
         CreateIngredient.MapEndpoint(app);
         GetIngredient.MapEndpoint(app);
         GetIngredients.MapEndpoint(app);
+       
+        
     }
 }

@@ -5,7 +5,7 @@ using Unclewood.Modules.Ingredients.Infrastructure.Database;
 
 namespace Unclewood.Modules.Ingredients.Infrastructure;
 
-public class IngredientRepository : IIngrediantsRepository
+public class IngredientRepository : IIngredientsRepository
 {
     private readonly UnclewoodDbContext _dbContext;
 
@@ -21,41 +21,41 @@ public class IngredientRepository : IIngrediantsRepository
         return Task.CompletedTask;
     }
 
-    public async Task<Ingredient?> GetIngrediantByNameAsync(string ingrediantName)
+    public async Task<Ingredient?> GetIngredientByNameAsync(string ingrediantName)
     {
         return await _dbContext.Ingredients.
             Where(i => i.Name == ingrediantName)
             .SingleOrDefaultAsync();
     }
 
-    public async Task<Ingredient?> GetIngrediantByIdAsync(Guid id)
+    public async Task<Ingredient?> GetIngredientByIdAsync(Guid id)
     {
         return await _dbContext.Ingredients.FindAsync(id);
     }
 
-    public async Task<IEnumerable<Ingredient>> GetIngrediantsAsync()
+    public async Task<List<Ingredient>> GetIngredientsAsync()
     {
         return (await _dbContext.Ingredients.ToListAsync())!;
     }
 
-    public async Task<bool> IngrediantExists(string ingrediantName)
+    public async Task<bool> IngredientExists(string ingredientName)
     {
-        return await _dbContext.Ingredients.AnyAsync(x => x.Name == ingrediantName.ToLower());
+        return await _dbContext.Ingredients.AnyAsync(x => x.Name == ingredientName.ToLower());
 
     }
 
-    public async Task AddIngrediantAsync(Ingredient ingrediant)
+    public async Task AddIngredientAsync(Ingredient ingrediant)
     {
         await _dbContext.Ingredients.AddAsync(ingrediant);
     }
 
-    public async Task DeleteIngrediantAsync(Guid ingrediantId)
+    public void DeleteIngredientAsync(Ingredient ingredient)
     {
-        var ingredient = await _dbContext.Ingredients.FindAsync(ingrediantId);
-        if (ingredient == null)
-        {
-            throw new KeyNotFoundException($"Ingredient with ID {ingrediantId} not found.");
-        }
+        throw new NotImplementedException();
+    }
+
+    public void DeleteIngredient(Ingredient ingredient)
+    {
         _dbContext.Ingredients.Remove(ingredient);
     }
 }
