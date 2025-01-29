@@ -1,5 +1,5 @@
+using Unclewood.Common.Application.Messaging;
 using Unclewood.Modules.Ingredients.Application.Interfaces;
-using Unclewood.Modules.Ingredients.Application.Interfaces.Command;
 using Unclewood.Modules.Ingredients.Domain;
 
 namespace Unclewood.Modules.Ingredients.Application.Commands.CreateIngredient;

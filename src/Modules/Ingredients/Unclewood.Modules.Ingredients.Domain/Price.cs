@@ -34,17 +34,17 @@ public sealed class Price
     {
         if (value < MinValue)
         {
-          //  throw new PriceDomainException($"Price cannot be less than {MinValue}");
+           throw new PriceDomainException($"Price cannot be less than {MinValue}");
         }
 
         if (value > MaxValue)
         {
-           // throw new PriceDomainException($"Price cannot exceed {MaxValue}");
+            throw new PriceDomainException($"Price cannot exceed {MaxValue}");
         }
 
         if (decimal.Round(value, 2) != value)
         {
-            //throw new PriceDomainException("Price cannot have more than 2 decimal places");
+            throw new PriceDomainException("Price cannot have more than 2 decimal places");
         }
     }
     
@@ -107,7 +107,7 @@ public sealed class Price
     {
         if (Currency != other.Currency)
         {
-            //throw new PriceDomainException($"Cannot compare prices with different currencies: {Currency} and {other.Currency}");   
+            throw new PriceDomainException($"Cannot compare prices with different currencies: {Currency} and {other.Currency}");   
         }
         
     }

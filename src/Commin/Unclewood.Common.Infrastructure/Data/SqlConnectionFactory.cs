@@ -1,8 +1,8 @@
 using System.Data;
 using Npgsql;
-using Unclewood.Modules.Ingredients.Application.Data;
+using Unclewood.Common.Application.Data;
 
-namespace Unclewood.Modules.Ingredients.Infrastructure.Data;
+namespace Unclewood.Commen.Infrastructure.Data;
 
 public class SqlConnectionFactory : ISqlConnectionFactory
 {

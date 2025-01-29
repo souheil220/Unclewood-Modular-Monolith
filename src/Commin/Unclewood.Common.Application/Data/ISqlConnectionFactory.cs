@@ -1,6 +1,6 @@
 using System.Data;
 
-namespace Unclewood.Modules.Ingredients.Application.Data;
+namespace Unclewood.Common.Application.Data;
 
 public interface ISqlConnectionFactory
 {

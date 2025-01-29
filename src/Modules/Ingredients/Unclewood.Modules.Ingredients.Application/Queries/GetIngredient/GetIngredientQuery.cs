@@ -1,4 +1,4 @@
-using Unclewood.Modules.Ingredients.Application.Interfaces.Query;
+using Unclewood.Common.Application.Messaging;
 
 namespace Unclewood.Modules.Ingredients.Application.Queries.GetIngredient;
 

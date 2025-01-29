@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Unclewood.Common.Domain.Abstraction;
 using Unclewood.Modules.Ingredients.Domain.Events;
 
 namespace Unclewood.Modules.Ingredients.Domain;

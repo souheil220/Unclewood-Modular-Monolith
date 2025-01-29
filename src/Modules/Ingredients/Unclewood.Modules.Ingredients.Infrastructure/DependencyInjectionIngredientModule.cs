@@ -3,11 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Unclewood.Commen.Infrastructure.Data;
+using Unclewood.Common.Application.Data;
 using Unclewood.Modules.Ingredients.Application;
-using Unclewood.Modules.Ingredients.Application.Data;
 using Unclewood.Modules.Ingredients.Application.Interfaces;
-using Unclewood.Modules.Ingredients.Infrastructure.Clock;
-using Unclewood.Modules.Ingredients.Infrastructure.Data;
 using Unclewood.Modules.Ingredients.Infrastructure.Database;
 using Unclewood.Modules.Ingredients.Presentation;
 
@@ -19,13 +18,9 @@ public static class DependencyInjectionIngredientModule
         IConfiguration configuration)
     {
 
-            services.AddTransient<IDateTimeProvider, DateTimeProvider>();
+           
 
-            services.AddMediatR(options =>
-            {
-                options.RegisterServicesFromAssembly
-                    (AssemblyReference.Assembly);
-            });
+           
 
             AddIngredientsModule(services, configuration);
           
@@ -93,7 +88,8 @@ public static class DependencyInjectionIngredientModule
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection") ?? 
                                throw new ArgumentNullException(nameof(configuration));
-        
+
+
         services.AddDbContext<UnclewoodDbContext>(options =>
             options.UseNpgsql(connectionString,
                 npgsqlOptions

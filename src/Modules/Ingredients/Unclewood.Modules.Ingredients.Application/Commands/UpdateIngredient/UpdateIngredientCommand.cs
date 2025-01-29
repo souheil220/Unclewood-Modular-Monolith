@@ -1,4 +1,4 @@
-using Unclewood.Modules.Ingredients.Application.Interfaces.Command;
+using Unclewood.Common.Application.Messaging;
 
 namespace Unclewood.Modules.Ingredients.Application.Commands.UpdateIngredient;
 

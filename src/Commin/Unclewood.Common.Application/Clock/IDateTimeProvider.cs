@@ -1,4 +1,4 @@
-﻿namespace Unclewood.Modules.Ingredients.Infrastructure.Clock;
+﻿namespace Unclewood.Common.Application.Clock;
 
 public interface IDateTimeProvider
 {

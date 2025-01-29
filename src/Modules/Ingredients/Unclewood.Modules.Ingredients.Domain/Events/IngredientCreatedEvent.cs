@@ -1,3 +1,8 @@
+using Unclewood.Common.Domain.Abstraction;
+
 namespace Unclewood.Modules.Ingredients.Domain.Events;
 
-public record IngredientCreatedEvent(Guid Id):IDomainEvent;
+public class IngredientCreatedEvent(Guid eventId):DomainEvent
+{
+    public Guid EventId { get; init; } = eventId;
+}
