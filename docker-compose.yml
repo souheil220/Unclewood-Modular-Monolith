@@ -22,3 +22,19 @@
       - POSTGRES_PASSWORD=souhil433@
     ports:
       - "5432:5432"
+  
+  UNCLEWOOD_MODULAR_MONOLITH_SEQ:
+    image: datalust/seq:latest
+    container_name: UNCLEWOOD_MODULAR_MONOLITH_SEQ
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
+      
+  UNCLEWOOD_MODULAR_MONOLITH_REDIS:
+    image: redis:latest
+    container_name: UNCLEWOOD_MODULAR_MONOLITH_REDIS
+    restart: always
+    ports:
+      - '6379:6379'

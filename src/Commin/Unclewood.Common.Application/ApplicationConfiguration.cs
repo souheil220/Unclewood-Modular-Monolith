@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
-using System.Reflection.Metadata;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Unclewood.Common.Application.Behavior;
 
 namespace Unclewood.Common.Application;
 
@@ -13,6 +13,10 @@ public static  class ApplicationConfiguration
         services.AddMediatR(options =>
         {
             options.RegisterServicesFromAssemblies(moduleAssemblies);
+            
+            options.AddOpenBehavior(typeof(ExceptionHandlingPipelineBehavior<,>));
+            options.AddOpenBehavior(typeof(RequestLoggingPipelineBehavior<,>));
+            options.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
         });
 
         services.AddValidatorsFromAssemblies(moduleAssemblies,includeInternalTypes:true);

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Unclewood.Modules.Ingredients.Domain;
+using Unclewood.Common.Domain.Abstraction;
 
 namespace Unclewood.Common.Application.Messaging;
 

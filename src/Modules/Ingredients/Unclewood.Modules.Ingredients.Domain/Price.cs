@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using Unclewood.Common.Domain.Abstraction;
 
 namespace Unclewood.Modules.Ingredients.Domain;
 
@@ -55,7 +56,8 @@ public sealed class Price
             return Result.Failure<string>(
                 new Error(
                     "PriceDomainException.ValidateCurrency",
-                    "Currency cannot be empty"));
+                    "Currency cannot be empty",
+                    ErrorType.Problem));
 
         }
 
@@ -67,7 +69,8 @@ public sealed class Price
             return Result.Failure<string>(
                 new Error(
                     "PriceDomainException.ValidateCurrency",
-                    "Currency {currency} is not supported"));
+                    "Currency {currency} is not supported",
+                    ErrorType.Problem));
             
         }
 
@@ -81,7 +84,8 @@ public sealed class Price
             return Result.Failure<Price>(
                 new Error(
                     "PriceDomainException.MultiplyBy",
-                    "Multiplier cannot be negative"));
+                    "Multiplier cannot be negative",
+                    ErrorType.Failure));
 
         }
 

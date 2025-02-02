@@ -1,4 +1,5 @@
 using Unclewood.Common.Application.Messaging;
+using Unclewood.Common.Domain.Abstraction;
 using Unclewood.Modules.Ingredients.Application.Interfaces;
 using Unclewood.Modules.Ingredients.Domain;
 
@@ -30,7 +31,7 @@ public class DeleteIngredientCommandHandler:ICommandHandler<DeleteIngredientComm
         }
         catch (Exception e)
         {
-           return Result.Failure<Ingredient>(new Error("Exception",e.Message));
+           return Result.Failure<Ingredient>(new Error("Exception",e.Message,ErrorType.Failure));
         }
        
     }

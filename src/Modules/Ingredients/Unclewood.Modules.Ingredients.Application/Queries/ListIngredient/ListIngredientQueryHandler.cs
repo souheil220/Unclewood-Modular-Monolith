@@ -1,4 +1,5 @@
 using Unclewood.Common.Application.Messaging;
+using Unclewood.Common.Domain.Abstraction;
 using Unclewood.Modules.Ingredients.Application.Interfaces;
 using Unclewood.Modules.Ingredients.Domain;
 

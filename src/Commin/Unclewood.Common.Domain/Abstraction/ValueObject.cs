@@ -1,4 +1,4 @@
-namespace Unclewood.Modules.Ingredients.Domain;
+namespace Unclewood.Common.Domain.Abstraction;
 
 public  abstract class ValueObject
 {
